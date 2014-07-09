@@ -1,4 +1,6 @@
 
+var API_SERVER = "jpcs.me:54321";
+
 
 // var now = 
 // var hour = now.getHours();
@@ -15,7 +17,7 @@
 // });
 
 
-$.get('http://127.0.0.1:5000/background', function(data){
+$.get('http://'+API_SERVER+'/background', function(data){
 	console.log(data);
 	$('body').css('background-image', "url('"+data.url+"')");
 })

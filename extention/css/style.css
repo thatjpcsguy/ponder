@@ -31,7 +31,8 @@ body {
 	height: 4px;
 	width: 100%;
 	position: absolute;
-	background-color: blue;
+	background-color: white;
+	border-bottom: 3px solid black;
 }
 
 
