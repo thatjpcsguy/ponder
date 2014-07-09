@@ -1,3 +1,5 @@
+@font-face { font-family: 'MeteoconsRegular'; src: url('/font/meteocons-webfont.eot'); src: url('/font/meteocons-webfont.eot?#iefix') format('embedded-opentype'), url('/font/meteocons-webfont.woff') format('woff'), url('/font/meteocons-webfont.ttf') format('truetype'), url('/font/meteocons-webfont.svg#MeteoconsRegular') format('svg'); font-weight: normal; font-style: normal; }
+
 html, body { 
 	height: 100%;
 	padding: 0;
@@ -26,6 +28,33 @@ body {
 	/*-webkit-text-stroke: 3px black;*/
 	
 }
+#greeting {
+	position: absolute;
+	top: 30%;
+	text-align: center;
+	width: 100%;
+	margin-top: 280px;
+	margin-bottom: 0;
+	font-size: 30pt;
+	/*-webkit-text-stroke: 3px black;*/
+	
+}
+
+#greeting.prompt {
+	margin-top: 0;
+	font-size: 60pt;
+}
+
+#greeting.prompt input {
+	margin-top: 0;
+	font-size: 60pt;
+	background: none;
+	border: 0;
+	border-bottom: 2px solid white;
+	width: 400px;
+	font-family: 'Megrim', cursive;
+	color: white;
+}
 
 #bar {
 	height: 4px;
@@ -39,23 +68,43 @@ body {
 #credit {
 	position: absolute;
 	top: 100%;
-	margin-top: -50px;
+	margin-top: -60px;
 	height: 40px;
 	/*outline: 1px solid white;*/
-	padding-left: 20px;
+	padding-left: 30px;
 	width: 500px;
 }
 
 /* Weather */
-#weather { position: relative; }
-#weather .location { outline: none; }
-#weather .editing { border-bottom: 1px solid white; }
-#weather .unit.hide { display: none; }
-#weather .unit { display: block; position: absolute; left: 97%; top: 5px; font-size: 55%; text-transform: uppercase; -webkit-animation: fadeout 4s ease 4s 1 normal; -webkit-animation-fill-mode: forwards; }
+#weather { 
+	position: absolute; 
+	left: 100%;
+	margin-left: -330px;
+	top: 10px;
+	font-size: 30pt;
+	width: 300px;
+	text-align: right;
+	padding-right: 30px;
+	/*font-family: 'MeteoconsRegular';*/
+}
+#weather-desc { 
+	position: absolute; 
+	left: 100%;
+	margin-left: -330px;
+	width: 300px;
+	top: 70px;
+	padding-right: 30px;
+	text-align: right;
+}
+#weather .icon {
+	font-family: 'MeteoconsRegular';
+	font-size: 40pt;
+	position: relative;
+	top: 9px;
+}
 
-#weather .icon:before { font-family: 'MeteoconsRegular'; content: attr(data-icon); }
 
-@font-face { font-family: 'MeteoconsRegular'; src: url('/font/meteocons-webfont.eot'); src: url('/font/meteocons-webfont.eot?#iefix') format('embedded-opentype'), url('/font/meteocons-webfont.woff') format('woff'), url('/font/meteocons-webfont.ttf') format('truetype'), url('/font/meteocons-webfont.svg#MeteoconsRegular') format('svg'); font-weight: normal; font-style: normal; }
+
 
 
 /* Animations */

@@ -1,36 +1,53 @@
 
-var API_SERVER = "jpcs.me:54321";
-
-
-// var now = 
-// var hour = now.getHours();
-// var period;
-// if (hour >= 3 && hour < 12) period = 'morning';
-// if (hour >= 12 && hour < 17) period = 'afternoon';
-// if (hour >= 17 || hour < 3) period = 'evening';
-   
-
-
-
-// chrome.tabs.update({
-//     url:'chrome://apps'
-// });
-
-
-$.get('http://'+API_SERVER+'/background', function(data){
+$.get('http://500px.com/popular.rss', function(data){
 	console.log(data);
-	$('body').css('background-image', "url('"+data.url+"')");
-	$('#credit').html('<p>Photo Credit - '+data.credit+'</p>');
-})
+	$(data).find("item").each(function () {
+		console.log(this);
+	});
 
-
-function displayTime() {
-    var time = moment().format('HH:mm');
-    $('#clock').html(time);
-    setTimeout(displayTime, 1000);
-}
- 
-$(document).ready(function() {
-    displayTime();
 });
 
+
+function saveName(){
+	localStorage.setItem("name", $('#greeting input').val());
+	$('#greeting').removeClass('prompt');
+	displayTime();
+	displayGreeting();
+	return false;
+}
+
+$(document).ready(function() {
+	//Load The Background
+	$.get('http://'+API_SERVER+'/background', function(data){
+		$('body').css('background-image', "url('"+data.url+"')");
+		$('#credit').html('<p>Photo Credit - '+data.credit+'</p>');
+	})
+
+	if (localStorage.getItem("name"))
+	{
+		//Build a Clock
+	    displayTime();
+
+	    //Show The Greeting Message
+	    displayGreeting();
+
+	    //Display Weather
+	    displayWeather();
+
+	}
+	else
+	{
+		$('#greeting').addClass('prompt');
+		$('#greeting').html('<form>What Is Your Name? <input type="text"></form>');
+		
+	}
+
+    
+});
+
+$(function () {
+    $('#greeting form').bind('submit', function (e) {
+        e.preventDefault();
+        saveName();
+    });
+});
