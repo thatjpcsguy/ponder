@@ -1,7 +1,6 @@
 from flask import Flask
 from flask import request
 from flask import jsonify
-import flask_cors
 import hashlib
 import base64
 import os
@@ -78,4 +77,4 @@ def background():
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0', port=54321)
