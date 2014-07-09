@@ -20,11 +20,12 @@ var API_SERVER = "jpcs.me:54321";
 $.get('http://'+API_SERVER+'/background', function(data){
 	console.log(data);
 	$('body').css('background-image', "url('"+data.url+"')");
+	$('#credit').html('<p>Photo Credit - '+data.credit+'</p>');
 })
 
 
 function displayTime() {
-    var time = moment().format('HH:mm:ss');
+    var time = moment().format('HH:mm');
     $('#clock').html(time);
     setTimeout(displayTime, 1000);
 }

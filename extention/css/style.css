@@ -8,8 +8,8 @@ body {
 	overflow: hidden; 
 	background: #232323; 
 	color: #fff;
-    font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif; 
-
+    /*font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif; */
+    font-family: 'Megrim', cursive;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -20,10 +20,10 @@ body {
 	top: 30%;
 	text-align: center;
 	width: 100%;
-	font-size: 80pt;
+	font-size: 200pt;
 	margin-top: 0;
 	margin-bottom: 0;
-	-webkit-text-stroke: 3px black;
+	/*-webkit-text-stroke: 3px black;*/
 	
 }
 
@@ -35,6 +35,16 @@ body {
 	border-bottom: 3px solid black;
 }
 
+
+#credit {
+	position: absolute;
+	top: 100%;
+	margin-top: -50px;
+	height: 40px;
+	/*outline: 1px solid white;*/
+	padding-left: 20px;
+	width: 500px;
+}
 
 /* Weather */
 #weather { position: relative; }
