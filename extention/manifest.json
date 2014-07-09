@@ -1,0 +1,27 @@
+{
+"update_url": "https://clients2.google.com/service/update2/crx",
+
+    "manifest_version": 2,
+    "name": "Ponder",
+    "version": "0.0.1",
+    "description": "Replace new tab page with something to ponder",
+    // "icons": {
+    //     "16": "icon-16.png",
+    //     "48": "icon-48.png",
+    //     "128": "icon-128.png"
+    // },
+    // "background": {
+    //     "scripts": [],
+    //     "persistent": false
+    // },
+    "content_security_policy": "script-src 'self' https://ssl.google-analytics.com https://query.yahooapis.com 'unsafe-eval'; object-src 'self'",
+    "chrome_url_overrides": {
+        "newtab": "index.html"
+    },
+    "offline_enabled": true,
+    "permissions": [
+        "geolocation",
+        "unlimitedStorage",
+        "*://*.yahooapis.com/*"
+    ]
+}

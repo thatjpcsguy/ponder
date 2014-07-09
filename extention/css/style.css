@@ -1,0 +1,67 @@
+html, body { 
+	height: 100%;
+	padding: 0;
+	margin: 0;
+}
+body {
+	min-height: 100%; 
+	overflow: hidden; 
+	background: #232323; 
+	color: #fff;
+    font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif; 
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#clock {
+	position: absolute;
+	top: 30%;
+	text-align: center;
+	width: 100%;
+	font-size: 80pt;
+	margin-top: 0;
+	margin-bottom: 0;
+	-webkit-text-stroke: 3px black;
+	
+}
+
+#bar {
+	height: 4px;
+	width: 100%;
+	position: absolute;
+	background-color: blue;
+}
+
+
+/* Weather */
+#weather { position: relative; }
+#weather .location { outline: none; }
+#weather .editing { border-bottom: 1px solid white; }
+#weather .unit.hide { display: none; }
+#weather .unit { display: block; position: absolute; left: 97%; top: 5px; font-size: 55%; text-transform: uppercase; -webkit-animation: fadeout 4s ease 4s 1 normal; -webkit-animation-fill-mode: forwards; }
+
+#weather .icon:before { font-family: 'MeteoconsRegular'; content: attr(data-icon); }
+
+@font-face { font-family: 'MeteoconsRegular'; src: url('/font/meteocons-webfont.eot'); src: url('/font/meteocons-webfont.eot?#iefix') format('embedded-opentype'), url('/font/meteocons-webfont.woff') format('woff'), url('/font/meteocons-webfont.ttf') format('truetype'), url('/font/meteocons-webfont.svg#MeteoconsRegular') format('svg'); font-weight: normal; font-style: normal; }
+
+
+/* Animations */
+.softpulse { -webkit-animation: updatepulse 1s ease 0.5s 1 normal; }
+.pulse { -webkit-animation: pulse 1s ease 0s 1 normal; }
+
+@-webkit-keyframes updatepulse {
+	0% { background: rgba(255,255,255,0); }
+	5% { background: rgba(255,255,255,0.6); }
+	100% { background: rgba(0,0,0,0.3); }
+}
+
+@-webkit-keyframes pulse {
+	0% { background: rgba(255,255,255,0.5); }
+	100% { background: rgba(255,255,255,0); }
+}
+@-webkit-keyframes fadein { from { opacity: 0 } to { opacity: 1 } }
+@-webkit-keyframes fadeout { from { opacity: 1 } to { opacity: 0 } }
+
+
