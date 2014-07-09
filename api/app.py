@@ -71,6 +71,8 @@ def background():
 	for line in open('unsplash.txt'):
 		options.append(line.split("###"))
 
+    options.reverse()
+
 	d = int(str(datetime.datetime.today().day)[-1])
 	return jsonify(url = options[d][0], credit = options[d][1].strip())
 
