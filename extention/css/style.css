@@ -75,6 +75,24 @@ body {
 	width: 500px;
 }
 
+#phab {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+
+	/*outline: 1px solid white;*/
+	padding-right: 30px;
+	padding-bottom: 30px;
+	text-align: right;
+	width: 500px;
+	list-style: none;
+	line-height: 1.5;
+
+}
+#phab a {
+	color: white;
+}
+
 /* Weather */
 #weather { 
 	position: absolute; 

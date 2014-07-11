@@ -22,6 +22,7 @@
     "permissions": [
         "geolocation",
         "unlimitedStorage",
-        "*://*.yahooapis.com/*"
+        "*://*.yahooapis.com/*",
+        "https://phabricator.freelancer.com/*"
     ]
 }

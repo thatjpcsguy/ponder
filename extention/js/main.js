@@ -1,11 +1,11 @@
 
-$.get('http://500px.com/popular.rss', function(data){
-	console.log(data);
-	$(data).find("item").each(function () {
-		console.log(this);
-	});
+// $.get('http://500px.com/popular.rss', function(data){
+// 	console.log(data);
+// 	$(data).find("item").each(function () {
+// 		console.log(this);
+// 	});
 
-});
+// });
 
 
 function saveName(){
@@ -14,6 +14,16 @@ function saveName(){
 	displayTime();
 	displayGreeting();
 	return false;
+}
+
+function displayPhabTicketsNaive() {
+	$.get('phab.html', function(data){
+		console.log(data);
+		$('#phab').html(data);
+	});
+
+	setTimeout(displayPhabTicketsNaive, 300000);
+
 }
 
 $(document).ready(function() {
@@ -33,6 +43,8 @@ $(document).ready(function() {
 
 	    //Display Weather
 	    displayWeather();
+
+	    displayPhabTicketsNaive();
 
 	}
 	else

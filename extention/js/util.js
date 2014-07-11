@@ -73,7 +73,7 @@ function showError(error) {
 function displayTime() {
     var time = moment().format('HH:mm');
     $('#clock').html(time);
-    setTimeout(displayTime, 1000);
+    setTimeout(displayTime, 5000);
 }
 
 
@@ -84,6 +84,8 @@ function displayWeather() {
 	} else {
 	    geoIP();
 	}
+
+	setTimeout(displayWeather, 50000);
 }
 
 
@@ -96,4 +98,6 @@ function displayGreeting()
 	if (hour >= 12 && hour < 17) period = 'Afternoon';
 	if (hour >= 17 || hour < 3) period = 'Evening';
     $('#greeting').html('Good '+period + ', ' + localStorage.getItem("name"));
+
+    setTimeout(displayGreeting, 5000);
 }
