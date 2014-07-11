@@ -8,7 +8,7 @@ html, body {
 body {
 	min-height: 100%; 
 	overflow: hidden; 
-	background: #232323; 
+	background: white; 
 	color: #fff;
     /*font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif; */
     font-family: 'Megrim', cursive;
@@ -26,6 +26,7 @@ body {
 	margin-top: 0;
 	margin-bottom: 0;
 	/*-webkit-text-stroke: 3px black;*/
+	text-shadow: 1px 1px 15px #232323;
 	
 }
 #greeting {
@@ -36,6 +37,7 @@ body {
 	margin-top: 280px;
 	margin-bottom: 0;
 	font-size: 30pt;
+	text-shadow: 1px 1px 15px #232323;
 	/*-webkit-text-stroke: 3px black;*/
 	
 }
@@ -73,6 +75,7 @@ body {
 	/*outline: 1px solid white;*/
 	padding-left: 30px;
 	width: 500px;
+	text-shadow: 1px 1px 15px #232323;
 }
 
 #phab {
@@ -88,6 +91,7 @@ body {
 	list-style: none;
 	line-height: 1.5;
 
+
 }
 #phab a {
 	color: white;
@@ -102,6 +106,7 @@ body {
 	font-size: 30pt;
 	width: 300px;
 	text-align: right;
+	text-shadow: 1px 1px 15px #232323;
 	padding-right: 30px;
 	/*font-family: 'MeteoconsRegular';*/
 }
@@ -112,6 +117,7 @@ body {
 	width: 300px;
 	top: 70px;
 	padding-right: 30px;
+	text-shadow: 1px 1px 15px #232323;
 	text-align: right;
 }
 #weather .icon {
