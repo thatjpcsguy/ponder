@@ -26,12 +26,45 @@ function displayPhabTicketsNaive() {
 
 }
 
+
+function displayBackground() {
+
+	if (localStorage.getItem("background_date") == moment().format('DDMMyy'))
+	{
+		$('body').css('background-image', "url('"+localStorage.getItem("background_url")+"')");
+		$('#background').css('background-image', "url('"+localStorage.getItem("background_url")+"')");
+		$('#credit').html('<p>Photo Credit - '+localStorage.getItem("background_credit")+'</p>');
+	}
+	else {
+		$.get('http://'+API_SERVER+'/background', function(data){
+			$('body').css('background-image', "url('"+data.url+"')");
+			$('#background').css('background-image', "url('"+data.url+"')");
+			$('#credit').html('<p>Photo Credit - '+data.credit+'</p>');
+			localStorage.setItem("background_date", moment().format('DDMMyy'));
+			localStorage.setItem("background_url", data.url);
+			localStorage.setItem("background_credit", data.credit);
+		})
+	}
+
+	$("#background").dblclick(function(){
+		if ($("#background").hasClass('blur'))
+		{
+			$("#background").removeClass('blur');
+		}
+		else {
+			$("#background").addClass('blur');
+		}
+	})
+
+
+}
+
 $(document).ready(function() {
 	//Load The Background
-	$.get('http://'+API_SERVER+'/background', function(data){
-		$('body').css('background-image', "url('"+data.url+"')");
-		$('#credit').html('<p>Photo Credit - '+data.credit+'</p>');
-	})
+	displayBackground();
+
+
+
 
 	if (localStorage.getItem("name"))
 	{

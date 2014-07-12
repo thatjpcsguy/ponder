@@ -2,6 +2,9 @@ var API_SERVER = "jpcs.me:54321";
 
 
 function getWeather(latitude, longitude) {
+	console.log('Lat: '+latitude);
+	console.log('Lon: '+longitude);
+
     $.get('http://api.openweathermap.org/data/2.5/weather?&units=metric&lat=' + latitude + '&lon=' + longitude + '&mode=json', function(data) {      
         var icon = "";
         switch (data.weather[0].icon) {
@@ -42,11 +45,12 @@ function getWeather(latitude, longitude) {
 	            console.log('no weather icon found');
 	            break;
 	        default:
-	            icon = ")";
+	            icon = "";
     	}
-    	$("#weather .icon").html(icon);
-    	$("#weather .temp").html(data.main.temp+'&deg;c');
-    	$("#weather-desc").html(data.weather[0].description);
+    	$("#weather-icon").html(icon);
+    	$("#weather-temp").html(Math.round(data.main.temp)+'&deg;c');
+    	$("#weather-desc").html(data.weather[0].main);
+    	console.log(data.name);
 
     });
 }
@@ -85,7 +89,7 @@ function displayWeather() {
 	    geoIP();
 	}
 
-	setTimeout(displayWeather, 50000);
+	setTimeout(displayWeather, 5000);
 }
 
 
