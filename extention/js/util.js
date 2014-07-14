@@ -2,8 +2,8 @@ var API_SERVER = "jpcs.me:54321";
 
 
 function getWeather(latitude, longitude) {
-	console.log('Lat: '+latitude);
-	console.log('Lon: '+longitude);
+	// console.log('Lat: '+latitude);
+	// console.log('Lon: '+longitude);
 
     $.get('http://api.openweathermap.org/data/2.5/weather?&units=metric&lat=' + latitude + '&lon=' + longitude + '&mode=json', function(data) {      
         var icon = "";
@@ -50,7 +50,7 @@ function getWeather(latitude, longitude) {
     	$("#weather-icon").html(icon);
     	$("#weather-temp").html(Math.round(data.main.temp)+'&deg;c');
     	$("#weather-desc").html(data.weather[0].main);
-    	console.log(data.name);
+    	// console.log(data.name);
 
     });
 }

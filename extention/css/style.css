@@ -9,6 +9,9 @@ body {
 	min-height: 100%; 
 	overflow: hidden; 
 	background: white; 
+	background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 	color: #fff;
     /*font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif; */
     font-family: 'Megrim', cursive;
