@@ -1,13 +1,3 @@
-
-// $.get('http://500px.com/popular.rss', function(data){
-// 	console.log(data);
-// 	$(data).find("item").each(function () {
-// 		console.log(this);
-// 	});
-
-// });
-
-
 function saveName(){
 	localStorage.setItem("name", $('#greeting input').val());
 	$('#greeting').removeClass('prompt');
@@ -18,7 +8,7 @@ function saveName(){
 
 function displayPhabTicketsNaive() {
 	$.get('phab.html', function(data){
-		console.log(data);
+		// console.log(data);
 		$('#phab').html(data);
 	});
 
@@ -29,22 +19,51 @@ function displayPhabTicketsNaive() {
 
 function displayBackground() {
 
+	// localStorage.setItem("background_date", 'lol');
+
+	var reddit = false;
+
 	if (localStorage.getItem("background_date") == moment().format('DDMMyy'))
 	{
 		$('body').css('background-image', "url('"+localStorage.getItem("background_url")+"')");
 		$('#background').css('background-image', "url('"+localStorage.getItem("background_url")+"')");
-		$('#credit').html('<p>Photo Credit - '+localStorage.getItem("background_credit")+'</p>');
+		$('#credit').html(localStorage.getItem("background_credit"));
 		$('#quote').html('"'+ localStorage.getItem("background_quote") +'"');
 	}
 	else {
-		$.get('http://'+API_SERVER+'/background', function(data){
-			$('body').css('background-image', "url('"+data.url+"')");
-			$('#background').css('background-image', "url('"+data.url+"')");
-			$('#credit').html('<p>Photo Credit - '+data.credit+'</p>');
-			localStorage.setItem("background_date", moment().format('DDMMyy'));
-			localStorage.setItem("background_url", data.url);
-			localStorage.setItem("background_credit", data.credit);
-		})
+
+		$.get('http://www.reddit.com/r/earthporn.json', function(data) {
+			var re = /(https?:\/\/.*.jpg)/i;
+			for (var i = 0; i < data.data.children.length; i++) {
+			  	// console.log(data.data.children[i]);
+			  	if (re.exec(data.data.children[i].data.url))
+			  	{
+
+			  		reddit = true;
+			  		$('#background').css('background-image', "url('"+ data.data.children[i].data.url + "')");
+
+			  		$('body').css('background-image', "url('"+data.data.children[i].data.url+"')");
+
+					$('#credit').html('<p>Photo Source - /r/'+data.data.children[i].data.subreddit+'</p>');
+					localStorage.setItem("background_date", moment().format('DDMMyy'));
+					localStorage.setItem("background_url", data.data.children[i].data.url);
+					localStorage.setItem("background_credit", '<p>Photo Source - /r/'+data.data.children[i].data.subreddit+'</p>');
+
+					return;
+			  	}
+			}
+			if (reddit == false) {
+
+				$.get('http://'+API_SERVER+'/background', function(data){
+					$('body').css('background-image', "url('"+data.url+"')");
+					$('#background').css('background-image', "url('"+data.url+"')");
+					$('#credit').html('<p>Photo Credit - '+data.credit+'</p>');
+					localStorage.setItem("background_date", moment().format('DDMMyy'));
+					localStorage.setItem("background_url", data.url);
+					localStorage.setItem("background_credit", '<p>Photo Credit - '+data.credit+'</p>');
+				});
+			}
+		});
 
 		$.get('http://www.iheartquotes.com/api/v1/random?max_lines=1&source=codehappy&show_source=false&show_permalink=false&max_characters=256', function(data){
 			$('#quote').html('"'+ data +'"');
@@ -60,8 +79,7 @@ function displayBackground() {
 		else {
 			$("#background").addClass('blur');
 		}
-	})
-
+	});
 
 }
 
