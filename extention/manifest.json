@@ -24,6 +24,7 @@
         "unlimitedStorage",
         "*://*.yahooapis.com/*",
         "https://phabricator.freelancer.com/*",
-        "http://www.iheartquotes.com/*"
+        "http://www.iheartquotes.com/*",
+        "https://ssl.google-analytics.com/ga.js"
     ]
 }
