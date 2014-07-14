@@ -7,6 +7,7 @@ function getWeather(latitude, longitude) {
 
     $.get('http://api.openweathermap.org/data/2.5/weather?&units=metric&lat=' + latitude + '&lon=' + longitude + '&mode=json', function(data) {      
         var icon = "";
+        console.log(data.weather[0].icon);
         switch (data.weather[0].icon) {
 	        case "01d":
 	            icon = "B";
@@ -20,25 +21,30 @@ function getWeather(latitude, longitude) {
 	        case "02n":
 	            icon = "I";
 	            break;
-	        case "03d" || "03n":
+	        case "03d":
+	        case "03n":
 	            icon = "N"; 
 	           	break;         
-	        case "04d" || "04d": 
+	        case "04d":
+	        case "04d": 
 	            icon = "Y";  
 	            break;          
-	        case "09d" || "09n":
-	            icon = "R";
-	            break;
-	        case "10d" || "10n":
-	            icon = "R";
-	            break;
-	        case "11d" || "11n":
+	        case "09d":
+	        case "09n":
+	        case "10n":
+	        case "10d":
+	        	icon = "R";
+	        	break;
+	        case "11d":
+	        case "11n":
 	            icon = "O";
 	            break;
-	        case "13d" || "13n":
+	        case "13d":
+	        case "13n":
 	            icon = "W";
 	            break;
-	        case "50d" || "50n":
+	        case "50d":
+	        case "50n":
 	            icon = "M";
 	            break;
 	        case "":
