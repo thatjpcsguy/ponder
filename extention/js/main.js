@@ -34,6 +34,7 @@ function displayBackground() {
 		$('body').css('background-image', "url('"+localStorage.getItem("background_url")+"')");
 		$('#background').css('background-image', "url('"+localStorage.getItem("background_url")+"')");
 		$('#credit').html('<p>Photo Credit - '+localStorage.getItem("background_credit")+'</p>');
+		$('#quote').html('"'+ localStorage.getItem("background_quote") +'"');
 	}
 	else {
 		$.get('http://'+API_SERVER+'/background', function(data){
@@ -43,6 +44,11 @@ function displayBackground() {
 			localStorage.setItem("background_date", moment().format('DDMMyy'));
 			localStorage.setItem("background_url", data.url);
 			localStorage.setItem("background_credit", data.credit);
+		})
+
+		$.get('http://www.iheartquotes.com/api/v1/random?max_lines=1&source=codehappy&show_source=false&show_permalink=false&max_characters=256', function(data){
+			$('#quote').html('"'+ data +'"');
+			localStorage.setItem("background_quote", data);
 		})
 	}
 
@@ -84,10 +90,10 @@ $(document).ready(function() {
 	{
 		$('#greeting').addClass('prompt');
 		$('#greeting').html('<form>What Is Your Name? <input type="text"></form>');
-		
+
 	}
 
-    
+
 });
 
 $(function () {

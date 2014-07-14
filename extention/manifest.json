@@ -23,6 +23,7 @@
         "geolocation",
         "unlimitedStorage",
         "*://*.yahooapis.com/*",
-        "https://phabricator.freelancer.com/*"
+        "https://phabricator.freelancer.com/*",
+        "http://www.iheartquotes.com/*"
     ]
 }
