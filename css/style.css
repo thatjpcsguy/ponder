@@ -1,0 +1,44 @@
+
+html, body {
+	padding: 0;
+	margin: 0;
+	background: #232323;
+}
+body {
+	margin: 0 auto;
+	color: #fff;
+
+    font-family: 'Open Sans', "HelveticaNeue-UltraLight", "Helvetica Neue Ultra-Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+    line-height: 1;
+    font-weight: 100;
+
+    text-shadow: 1px 1px 10px black;
+}
+
+h1 {
+	font-family: 'Megrim';
+	font-size: 60pt;
+	margin-top: 40px;
+	margin-bottom: 10px;
+}
+
+
+
+.screenshot {
+	display: block;
+	width: 800px;
+	text-align: center;
+	margin-top: 30px;
+}
+
+.play {
+	width: 300px;
+	position: relative;
+	left: -235px;
+	margin-bottom: 100px;
+}
+
+.ribbon {
+	position: absolute; top: 0; right: 0; border: 0;
+}
