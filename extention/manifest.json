@@ -3,7 +3,7 @@
 
     "manifest_version": 2,
     "name": "Ponder",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Replace new tab page with something to ponder",
     "icons": {
         "16": "img/icon-16.png",
@@ -19,9 +19,6 @@
     "permissions": [
         "geolocation",
         "unlimitedStorage",
-        "*://*.yahooapis.com/*",
-        "https://phabricator.freelancer.com/*",
-        "http://www.iheartquotes.com/*",
         "https://ssl.google-analytics.com/ga.js",
         "*://*.googleapis.com/*"
     ]

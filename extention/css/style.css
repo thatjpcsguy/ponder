@@ -62,15 +62,19 @@ div {
 	font-size: 200pt;
 	margin-top: 0;
 	margin-bottom: 0;
-	-webkit-transition: all 1s ease-in;
+	-webkit-transition: all .5s ease-in;
 	pointer-events:none;
+}
+
+#greeting input {
+	pointer-events: auto;
 }
 
 #clock.small {
 	
 	top: 30px;
 	font-size: 30pt;
-	-webkit-transition: all 1s ease-in;
+	-webkit-transition: all .5s ease-in;
 }
 
 #greeting {
@@ -82,7 +86,7 @@ div {
 	margin-bottom: 0;
 	font-size: 30pt;
 	pointer-events:none;
-	-webkit-transition: all 1s ease-in;
+	-webkit-transition: all .5s ease-in;
 }
 
 #greeting.small {
@@ -91,7 +95,7 @@ div {
 	font-size: 12pt;
 	position: absolute;
 	top: 76px;
-	-webkit-transition: all 1s ease-in;
+	-webkit-transition: all .5s ease-in;
 }
 
 
