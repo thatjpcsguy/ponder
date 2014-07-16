@@ -3,17 +3,14 @@
 
     "manifest_version": 2,
     "name": "Ponder",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "description": "Replace new tab page with something to ponder",
-    // "icons": {
-    //     "16": "icon-16.png",
-    //     "48": "icon-48.png",
-    //     "128": "icon-128.png"
-    // },
-    // "background": {
-    //     "scripts": [],
-    //     "persistent": false
-    // },
+    "icons": {
+        "16": "img/icon-16.png",
+        "48": "img/icon-48.png",
+        "128": "img/icon-128.png",
+        "1024": "img/icon-1024.png"
+    },
     "content_security_policy": "script-src 'self' https://ssl.google-analytics.com https://query.yahooapis.com 'unsafe-eval'; object-src 'self'",
     "chrome_url_overrides": {
         "newtab": "index.html"
@@ -25,6 +22,7 @@
         "*://*.yahooapis.com/*",
         "https://phabricator.freelancer.com/*",
         "http://www.iheartquotes.com/*",
-        "https://ssl.google-analytics.com/ga.js"
+        "https://ssl.google-analytics.com/ga.js",
+        "*://*.googleapis.com/*"
     ]
 }
