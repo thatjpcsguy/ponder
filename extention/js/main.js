@@ -9,7 +9,7 @@ $(document).ready(function() {
 	displayPhabTicketsNaive();
 
 
-	if (localStorage.getItem("name"))
+	if (localStorage.getItem("user_name"))
 	{
 		//Build a Clock
 	    display_time();
@@ -26,6 +26,7 @@ $(document).ready(function() {
 		    $('#greeting form').bind('submit', function (e) {
 		        e.preventDefault();
 		        saveName();
+
 		    });
 		});
 
@@ -38,12 +39,14 @@ $(document).ready(function() {
         	$("#greeting").addClass('small');
         	$("#clock").addClass('small');
             $("#background").removeClass('blur');
+            _gaq.push(['_trackEvent', 'Background', 'dblclick', 'sharp']);
         }
         else {
             $("#background").addClass('blur');
             $("#credit").addClass('hide');
             $("#greeting").removeClass('small');
             $("#clock").removeClass('small');
+             _gaq.push(['_trackEvent', 'Background', 'dblclick', 'blur']);
         }
     });
 

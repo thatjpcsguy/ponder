@@ -6,7 +6,10 @@ var ONE_HOUR = ONE_MINUTE * 60;
 
 
 function saveName(){
-    localStorage.setItem("name", $('#greeting input').val());
+    localStorage.setItem("user_name", $('#greeting input').val());
+
+    _gaq.push(['_trackEvent', 'Name', 'Save', localStorage.getItem("user_name")]);
+
     $('#greeting').removeClass('prompt');
 
     display_time();
@@ -68,11 +71,15 @@ function display_time() {
 
 
 function get_weather_info() {
+    _gaq.push(['_trackEvent', 'Weather', 'Get', localStorage.getItem("location_lat")+', '+localStorage.getItem("location_lon")]);
+
     $.get('http://api.openweathermap.org/data/2.5/weather?&units=metric&lat=' + localStorage.getItem("location_lat") + '&lon=' + localStorage.getItem("location_lon") + '&mode=json', function(data) {      
         localStorage.setItem("weather_icon", get_weather_icon(data.weather[0].icon));
         localStorage.setItem("weather_temp", Math.round(data.main.temp)+'&deg;c');
         localStorage.setItem("weather_desc", data.weather[0].main);
         localStorage.setItem("weather_cache", moment().format('DDMMHH'));
+        _gaq.push(['_trackEvent', 'Weather', 'Show', localStorage.getItem("weather_temp")+' '+localStorage.getItem("weather_desc")]);
+
         set_weather_on_page();
     });
 }
@@ -121,7 +128,8 @@ function display_weather() {
 
 function display_greeting()
 {
-    $('#greeting').html('Good '+ get_day_period() + ', ' + localStorage.getItem("name"));
+    $('#greeting').html('Good '+ get_day_period() + ', ' + localStorage.getItem("user_name"));
+    
 
     setTimeout(display_greeting, ONE_MINUTE);
 }
@@ -163,6 +171,8 @@ function display_background() {
                     localStorage.setItem("background_cache", moment().format('DDMM')+get_day_period());
                     localStorage.setItem("background_url", data.data.children[i].data.url);
                     localStorage.setItem("background_credit", 'Photo Source - /r/'+data.data.children[i].data.subreddit);
+
+                    _gaq.push(['_trackEvent', 'Background', 'Show', localStorage.getItem("background_url")]);
                     set_background();
                     return;
                 }
