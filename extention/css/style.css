@@ -14,9 +14,13 @@ body {
     background-repeat: no-repeat;
 
 	color: #fff;
-    /*font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif; */
-    font-family: 'Megrim', cursive;
 
+    font-family: 'Megrim', "HelveticaNeue-UltraLight", "Helvetica Neue Ultra-Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+    line-height: auto;
+    font-weight: 100;
+
+    text-shadow: 1px 1px 10px #232323;
 }
 
 #background {
@@ -27,18 +31,18 @@ body {
 	left: -40px;
 	top: -40px;
 	--webkit-backface-visibility: hidden;
-	/*background-color: #232323;*/
+
 	background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    -webkit-transition: all .5s ease-in;
+    -webkit-transition: all 1s ease-in;
 
 
 }
 
 .blur {
-	-webkit-filter: blur(6px);
-	-webkit-transition: all .5s ease-in;
+	-webkit-filter: blur(10px);
+	-webkit-transition: all 1s ease-in;
 }
 
 div {
@@ -58,10 +62,17 @@ div {
 	font-size: 200pt;
 	margin-top: 0;
 	margin-bottom: 0;
-	/*-webkit-text-stroke: 3px black;*/
-	text-shadow: 1px 1px 15px #232323;
-
+	-webkit-transition: all 1s ease-in;
+	pointer-events:none;
 }
+
+#clock.small {
+	
+	top: 30px;
+	font-size: 30pt;
+	-webkit-transition: all 1s ease-in;
+}
+
 #greeting {
 	position: absolute;
 	top: 30%;
@@ -70,10 +81,19 @@ div {
 	margin-top: 280px;
 	margin-bottom: 0;
 	font-size: 30pt;
-	text-shadow: 1px 1px 15px #232323;
-	/*-webkit-text-stroke: 3px black;*/
-
+	pointer-events:none;
+	-webkit-transition: all 1s ease-in;
 }
+
+#greeting.small {
+
+	margin-top: 0px;
+	font-size: 12pt;
+	position: absolute;
+	top: 76px;
+	-webkit-transition: all 1s ease-in;
+}
+
 
 #greeting.prompt {
 	margin-top: 0;
@@ -102,13 +122,22 @@ div {
 
 #credit {
 	position: absolute;
-	top: 100%;
-	margin-top: -60px;
-	height: 40px;
-	/*outline: 1px solid white;*/
-	padding-left: 30px;
-	width: 500px;
-	text-shadow: 1px 1px 15px #232323;
+	
+	bottom: 30px;
+	
+	left: 30px;
+	font-size: 20pt;
+
+
+	
+	opacity: 1;
+	-webkit-transition: opacity 1s ease-in;
+}
+
+
+#credit.hide {
+	opacity: 0;
+	-webkit-transition: opacity 1s ease-in;
 }
 
 #phab {
@@ -133,22 +162,18 @@ div {
 /* Weather */
 #weather-temp {
 	position: absolute;
-
-
 	right: 90px;
-	top: 26px;
+	top: 30px;
 	font-size: 30pt;
 	text-align: right;
-	text-shadow: 1px 1px 15px #232323;
-	/*font-family: 'MeteoconsRegular';*/
+
+
 }
 #weather-desc {
 	position: absolute;
-
-
-	top: 70px;
+	top: 76px;
 	right: 90px;
-	text-shadow: 1px 1px 15px #232323;
+
 	text-align: right;
 }
 #weather-icon {
@@ -156,17 +181,17 @@ div {
 	font-size: 38pt;
 	right: 30px;
 	position: absolute;
-	text-shadow: 1px 1px 15px #232323;
+
 	top: 30px;
 }
 
 #quote {
 	position: absolute;
-	top: 25px;
+	top: 30px;
 	height: 40px;
 	padding-left: 30px;
 	width: 500px;
-	text-shadow: 1px 1px 15px #232323;
+
 }
 
 

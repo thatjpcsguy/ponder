@@ -3,7 +3,7 @@
 $(document).ready(function() {
 	//Load The Background
 	display_background();
-	display_quote();
+	// display_quote();
 	//Display Weather
 	display_weather();
 	displayPhabTicketsNaive();
@@ -34,10 +34,16 @@ $(document).ready(function() {
 	$("#background").dblclick(function(){
         if ($("#background").hasClass('blur'))
         {
+        	$("#credit").removeClass('hide');
+        	$("#greeting").addClass('small');
+        	$("#clock").addClass('small');
             $("#background").removeClass('blur');
         }
         else {
             $("#background").addClass('blur');
+            $("#credit").addClass('hide');
+            $("#greeting").removeClass('small');
+            $("#clock").removeClass('small');
         }
     });
 

@@ -162,7 +162,7 @@ function display_background() {
                 {
                     localStorage.setItem("background_cache", moment().format('DDMM')+get_day_period());
                     localStorage.setItem("background_url", data.data.children[i].data.url);
-                    localStorage.setItem("background_credit", '<p>Photo Source - /r/'+data.data.children[i].data.subreddit+'</p>');
+                    localStorage.setItem("background_credit", 'Photo Source - /r/'+data.data.children[i].data.subreddit);
                     set_background();
                     return;
                 }
