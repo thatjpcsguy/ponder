@@ -67,7 +67,7 @@ function geo_ip() {
 function display_time() {
     var time_format = localStorage.getItem("time_format") || DEFAULT_TIME_FORMAT;
 
-    $('#clock').html(moment().subtract('hours', 2).format(time_format));
+    $('#clock').html(moment().format(time_format));
     if (time_format !== localStorage.getItem("time_format")) {
         localStorage.setItem("time_format", time_format);
     }
