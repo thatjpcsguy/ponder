@@ -15,6 +15,7 @@ function saveName(){
 
     display_time();
     display_greeting();
+    display_quote();
 
     return false;
 }
@@ -115,6 +116,30 @@ function get_weather_location(){
     }
 }
 
+function display_quote() {
+    var subreddit = 'quotes';
+    if (localStorage.getItem("quote_cache") != moment().format('DDMM') + get_day_period()) {
+        jQuery.getJSON('http://www.reddit.com/r/' + subreddit + '/top.json?t=day', function(resp) {
+            if (typeof resp !== 'object' ||
+                typeof resp.data !== 'object' ||
+                typeof resp.data.children !== 'object') {
+                return false;
+            }
+
+            var top_quote = resp.data.children[0].data;
+            console.log(top_quote);
+            localStorage.setItem("quote_text", top_quote.title);
+            localStorage.setItem("quote_cache", moment().format('DDMM') + get_day_period());
+            jQuery('#quote').html(localStorage.getItem("quote_text")).fadeIn();
+        }).fail(function() {
+            console.log( "error" );
+        });
+    } else {
+        console.log('exisiting!')
+        jQuery('#quote').html(localStorage.getItem("quote_text")).fadeIn();
+    }
+}
+
 function set_weather_on_page() {
     $("#weather-icon").html(localStorage.getItem("weather_icon"));
     $("#weather-temp").html(localStorage.getItem("weather_temp"));
@@ -136,25 +161,7 @@ function display_weather() {
 function display_greeting()
 {
     $('#greeting').html('Good '+ get_day_period() + ', ' + localStorage.getItem("user_name"));
-
-
     setTimeout(display_greeting, ONE_MINUTE);
-}
-
-function display_quote() {
-    if (localStorage.getItem("quote_cache") != moment().format('DDMM')+get_day_period())
-    {
-        $.get('http://www.iheartquotes.com/api/v1/random?max_lines=1&source=codehappy&show_source=false&show_permalink=false&max_characters=256', function(data){
-            localStorage.setItem("quote_text", '"'+data+'"');
-            localStorage.setItem("quote_cache", moment().format('DDMM')+get_day_period());
-            $('#quote').html(localStorage.getItem("quote_text"));
-        });
-    }
-    else {
-        $('#quote').html(localStorage.getItem("quote_text"));
-    }
-
-    setTimeout(display_quote, ONE_MINUTE);
 }
 
 function set_background() {

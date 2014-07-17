@@ -6,9 +6,9 @@ html, body {
 	margin: 0;
 }
 body {
-	min-height: 100%; 
-	overflow: hidden; 
-	background: white; 
+	min-height: 100%;
+	overflow: hidden;
+	background: white;
 	background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -71,7 +71,7 @@ div {
 }
 
 #clock.small {
-	
+
 	top: 30px;
 	font-size: 30pt;
 	-webkit-transition: all .5s ease-in;
@@ -126,14 +126,14 @@ div {
 
 #credit {
 	position: absolute;
-	
+
 	bottom: 30px;
-	
+
 	left: 30px;
 	font-size: 20pt;
 
 
-	
+
 	opacity: 1;
 	-webkit-transition: opacity 1s ease-in;
 }
@@ -195,7 +195,7 @@ div {
 	height: 40px;
 	padding-left: 30px;
 	width: 500px;
-
+	display: none;
 }
 
 

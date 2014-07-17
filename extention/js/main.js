@@ -16,6 +16,9 @@ $(document).ready(function() {
 
 	    //Show The Greeting Message
 	    display_greeting();
+
+        //Fetch quote
+        display_quote();
 	}
 	else
 	{
