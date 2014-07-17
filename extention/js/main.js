@@ -4,8 +4,6 @@ $(document).ready(function() {
 	//Load The Background
 	display_background();
 
-	displayPhabTicketsNaive();
-
     //TODO: check chrome sync for setting changes?
 	if (localStorage.getItem("user_name")) {
         display_all();

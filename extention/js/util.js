@@ -226,6 +226,7 @@ function display_all() {
     display_weather();
     display_greeting();
     display_quote();
+    display_news();
 }
 
 function init_sync_listener() {
