@@ -3,6 +3,7 @@
 
     "manifest_version": 2,
     "name": "Ponder",
+    "key": "jpbfinekcbbkphbccmbjpjmehlkplbco",
     "version": "1.0.1",
     "description": "Replace new tab page with something to ponder",
     "icons": {
@@ -20,6 +21,7 @@
         "geolocation",
         "unlimitedStorage",
         "https://ssl.google-analytics.com/ga.js",
-        "*://*.googleapis.com/*"
+        "*://*.googleapis.com/*",
+        "storage"
     ]
 }

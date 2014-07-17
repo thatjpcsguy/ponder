@@ -3,38 +3,14 @@
 $(document).ready(function() {
 	//Load The Background
 	display_background();
-	// display_quote();
-	//Display Weather
-	display_weather();
 
+	displayPhabTicketsNaive();
 
-	if (localStorage.getItem("user_name"))
-	{
-		//Build a Clock
-	    display_time();
-
-	    //Show The Greeting Message
-	    display_greeting();
-
-        //Fetch quote
-        display_quote();
-
-        //Fetch news
-        display_news();
-	}
-	else
-	{
-		$('#greeting').addClass('prompt');
-		$('#greeting').html('<form>What Is Your Name? <input type="text"></form>');
-
-		$(function () {
-		    $('#greeting form').bind('submit', function (e) {
-		        e.preventDefault();
-		        saveName();
-
-		    });
-		});
-
+    //TODO: check chrome sync for setting changes?
+	if (localStorage.getItem("user_name")) {
+        display_all();
+	} else {
+        get_name();
 	}
 
 	$("#background").dblclick(function(){
@@ -55,7 +31,7 @@ $(document).ready(function() {
         }
     });
 
-
+    init_sync_listener();
 });
 
 
