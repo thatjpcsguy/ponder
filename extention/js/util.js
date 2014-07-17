@@ -20,16 +20,6 @@ function saveName(){
     return false;
 }
 
-function displayPhabTicketsNaive() {
-    $.get('phab.html', function(data){
-        // console.log(data);
-        $('#phab').html(data);
-    });
-
-    setTimeout(displayPhabTicketsNaive, ONE_MINUTE);
-
-}
-
 /*
  * Translate open weather map icons into meteocons
  */

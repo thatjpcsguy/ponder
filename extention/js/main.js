@@ -6,7 +6,6 @@ $(document).ready(function() {
 	// display_quote();
 	//Display Weather
 	display_weather();
-	displayPhabTicketsNaive();
 
 
 	if (localStorage.getItem("user_name"))
