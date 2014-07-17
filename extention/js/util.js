@@ -3,6 +3,7 @@ var API_SERVER = "jpcs.me:54321";
 var ONE_SECOND = 1000;
 var ONE_MINUTE = ONE_SECOND * 60;
 var ONE_HOUR = ONE_MINUTE * 60;
+var DEFAULT_TIME_FORMAT = 'HH:mm';
 
 
 function saveName(){
@@ -64,7 +65,13 @@ function geo_ip() {
 
 
 function display_time() {
-    $('#clock').html(moment().format('HH:mm'));
+    var time_format = localStorage.getItem("time_format") || DEFAULT_TIME_FORMAT;
+
+    $('#clock').html(moment().subtract('hours', 2).format(time_format));
+    if (time_format !== localStorage.getItem("time_format")) {
+        localStorage.setItem("time_format", time_format);
+    }
+
     setTimeout(display_time, ONE_SECOND);
 }
 
@@ -73,7 +80,7 @@ function display_time() {
 function get_weather_info() {
     _gaq.push(['_trackEvent', 'Weather', 'Get', localStorage.getItem("location_lat")+', '+localStorage.getItem("location_lon")]);
 
-    $.get('http://api.openweathermap.org/data/2.5/weather?&units=metric&lat=' + localStorage.getItem("location_lat") + '&lon=' + localStorage.getItem("location_lon") + '&mode=json', function(data) {      
+    $.get('http://api.openweathermap.org/data/2.5/weather?&units=metric&lat=' + localStorage.getItem("location_lat") + '&lon=' + localStorage.getItem("location_lon") + '&mode=json', function(data) {
         localStorage.setItem("weather_icon", get_weather_icon(data.weather[0].icon));
         localStorage.setItem("weather_temp", Math.round(data.main.temp)+'&deg;c');
         localStorage.setItem("weather_desc", data.weather[0].main);
@@ -90,13 +97,13 @@ function get_weather_location(){
         localStorage.setItem("location_cache", moment().format('DDMM'));
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
-                function (data) { 
+                function (data) {
                     localStorage.setItem("location_lat", data.coords.latitude);
                     localStorage.setItem("location_lon", data.coords.longitude);
                     get_weather_info();
-                }, 
-                function (data) { 
-                    geo_ip(); 
+                },
+                function (data) {
+                    geo_ip();
                 }
             );
         } else {
@@ -129,7 +136,7 @@ function display_weather() {
 function display_greeting()
 {
     $('#greeting').html('Good '+ get_day_period() + ', ' + localStorage.getItem("user_name"));
-    
+
 
     setTimeout(display_greeting, ONE_MINUTE);
 }
