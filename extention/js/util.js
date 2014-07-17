@@ -5,17 +5,34 @@ var ONE_MINUTE = ONE_SECOND * 60;
 var ONE_HOUR = ONE_MINUTE * 60;
 var DEFAULT_TIME_FORMAT = 'HH:mm';
 
+function get_name() {
+    chrome.storage.sync.get('user_name', function(obj) {
+        if (typeof obj.user_name === 'string') {
+            localStorage.setItem("user_name", obj.user_name);
+            display_all();
+        } else {
+            jQuery('#greeting').addClass('prompt');
+            jQuery('#greeting').html('<form>What Is Your Name? <input type="text"></form>');
+            jQuery(function () {
+                jQuery('#greeting form').bind('submit', function (e) {
+                    e.preventDefault();
+                    saveName();
+                });
+            });
+        }
+    });
+}
 
 function saveName(){
-    localStorage.setItem("user_name", $('#greeting input').val());
+    var user_name = jQuery('#greeting input').val()
+    localStorage.setItem("user_name", user_name);
 
-    _gaq.push(['_trackEvent', 'Name', 'Save', localStorage.getItem("user_name")]);
+    chrome.storage.sync.set({'user_name': user_name});
+    _gaq.push(['_trackEvent', 'Name', 'Save', user_name]);
 
-    $('#greeting').removeClass('prompt');
+    jQuery('#greeting').removeClass('prompt');
 
-    display_time();
-    display_greeting();
-    display_quote();
+    display_all();
 
     return false;
 }
@@ -199,4 +216,20 @@ function display_background() {
     }
 
     setTimeout(display_background, ONE_MINUTE);
+}
+
+function display_all() {
+    display_time();
+    display_weather();
+    display_greeting();
+    display_quote();
+}
+
+function init_sync_listener() {
+    chrome.storage.onChanged.addListener(function(changes, namespace) {
+        for (key in changes) {
+            var storageChange = changes[key];
+            localStorage.setItem(key, storageChange.newValue);
+        }
+    });
 }
