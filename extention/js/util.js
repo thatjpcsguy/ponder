@@ -119,7 +119,7 @@ function get_weather_location(){
 function display_quote() {
     var subreddit = 'quotes';
     if (localStorage.getItem("quote_cache") != moment().format('DDMM') + get_day_period()) {
-        jQuery.getJSON('http://www.reddit.com/r/' + subreddit + '/top.json?t=day', function(resp) {
+        jQuery.getJSON('http://www.reddit.com/r/' + subreddit + '/top.json?t=day&limit=1', function(resp) {
             if (typeof resp !== 'object' ||
                 typeof resp.data !== 'object' ||
                 typeof resp.data.children !== 'object') {
@@ -127,17 +127,30 @@ function display_quote() {
             }
 
             var top_quote = resp.data.children[0].data;
-            console.log(top_quote);
             localStorage.setItem("quote_text", top_quote.title);
             localStorage.setItem("quote_cache", moment().format('DDMM') + get_day_period());
             jQuery('#quote').html(localStorage.getItem("quote_text")).fadeIn();
-        }).fail(function() {
-            console.log( "error" );
         });
     } else {
-        console.log('exisiting!')
         jQuery('#quote').html(localStorage.getItem("quote_text")).fadeIn();
     }
+}
+
+function display_news() {
+    jQuery.getJSON('http://www.reddit.com/hot.json?limit=5', function(resp) {
+        if (typeof resp !== 'object' ||
+            typeof resp.data !== 'object' ||
+            typeof resp.data.children !== 'object') {
+            return false;
+        }
+
+        var posts = resp.data.children;
+
+        for (var i = 0; i < posts.length; i++) {
+            jQuery('#news').append('<li><a href="' + posts[i].data.url + '">' + posts[i].data.title + '</a></li>')
+        }
+        jQuery('#news').fadeIn();
+    });
 }
 
 function set_weather_on_page() {

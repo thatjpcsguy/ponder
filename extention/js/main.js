@@ -19,6 +19,9 @@ $(document).ready(function() {
 
         //Fetch quote
         display_quote();
+
+        //Fetch news
+        display_news();
 	}
 	else
 	{

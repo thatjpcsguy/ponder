@@ -144,23 +144,22 @@ div {
 	-webkit-transition: opacity 1s ease-in;
 }
 
-#phab {
+#news {
 	position: absolute;
 	bottom: 0;
 	right: 0;
-
-	/*outline: 1px solid white;*/
 	padding-right: 30px;
 	padding-bottom: 30px;
 	text-align: right;
 	width: 500px;
 	list-style: none;
 	line-height: 1.5;
-
-
+	display: none;
 }
-#phab a {
+
+#news a {
 	color: white;
+	text-decoration: none;
 }
 
 /* Weather */
